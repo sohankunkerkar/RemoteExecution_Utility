@@ -10,7 +10,7 @@ class ServerConn {
       String clientInput; 
       String[]elements=new String[3]; //to store command line arguments provided by user
 
-      ServerSocket welcomeSocket = new ServerSocket(15005); 
+      ServerSocket welcomeSocket = new ServerSocket(15007); 
       //Creating HashMap to store data from the file
       HashMap<String, UserCredentials> mapUsers=new HashMap<>();
       while(true) { 
@@ -23,10 +23,9 @@ class ServerConn {
       try
        {
     	  //Creating an object of Usercredentials class
-           UserCredentials u=new UserCredentials();
-           //Reading the file input
-	   //Please provide filepath for config file to read the credetials   
-           File config=new File("filepath for config file");
+           
+           //Reading the file input from config file so basically we need to enter config file name in place of args[0]
+           File config=new File("file path"+args[0]);
            Scanner sc=new Scanner(config);
            while(sc.hasNext())
            {
@@ -38,13 +37,12 @@ class ServerConn {
            String prog=credentials[2];
            String[] progAccess=prog.split(",");
            // changing the username to lowercase in order to avoid confusion
+           UserCredentials u=new UserCredentials();
            u.setUsername(user.toLowerCase());
            u.setPassword(pass);
            u.setProgram(progAccess);
-           mapUsers.put(user.toLowerCase(), u);
-           
-           } 
-           
+           mapUsers.put(user.toLowerCase(), u);  
+           }           
           //reading the input from client 
            clientInput = inFromClient.readLine(); 
            //split the data to compare it with the on which is store in map
@@ -52,6 +50,7 @@ class ServerConn {
            //comparing user name
            if(!mapUsers.containsKey(elements[0]))
            {
+        	   
         	   //System.out.println(" Given username/password is not valid!");
         	   outToClient.writeBytes("Given username/password is not valid! \n");
            }
@@ -89,4 +88,3 @@ class ServerConn {
         } 
     } 
 } 
- 
