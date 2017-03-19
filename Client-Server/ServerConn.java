@@ -25,7 +25,8 @@ class ServerConn {
     	  //Creating an object of Usercredentials class
            UserCredentials u=new UserCredentials();
            //Reading the file input
-           File config=new File("/Users/Sohank/Documents/workspace/RemoteExec/src/config.txt");
+	   //Please provide filepath for config file to read the credetials   
+           File config=new File("filepath for config file");
            Scanner sc=new Scanner(config);
            while(sc.hasNext())
            {
