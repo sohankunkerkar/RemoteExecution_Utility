@@ -9,4 +9,8 @@ On Client Machine please enter a command in following manner
 
     Client machine: ./client --server <server ip> --user <username> --password <password> --exec <program to execute>
     
+I have made following assumption while buiding this code:
+1. This code can handle only single Client 
+2. 
+    
     
