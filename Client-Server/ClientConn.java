@@ -12,7 +12,7 @@ class ClientConn {
         String username=args[1];
         String password=args[2];
         String program=args[3];
-        Socket clientSocket = new Socket(ip, 15005); 
+        Socket clientSocket = new Socket(ip, 15007); 
 
         DataOutputStream outToServer = 
           new DataOutputStream(clientSocket.getOutputStream()); 
